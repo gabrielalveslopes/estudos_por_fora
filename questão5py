@@ -1,0 +1,49 @@
+palavra_secreta = "papagaio"
+letras_acertadas = []
+tentativas = 0
+max_tentativas = 5
+
+
+print("Palavra secreta: ", "_ " * len(palavra_secreta))
+
+while tentativas < max_tentativas:
+    letra = input('Digite uma letra: ').lower()
+
+    if letra in letras_acertadas:
+        print("Você já tentou essa letra. Tente outra.")
+        continue
+
+    if letra in palavra_secreta:
+        letras_acertadas.append(letra)
+        print("Letra correta!")
+    else:
+        tentativas += 1
+        print(f"Letra incorreta. Você tem {max_tentativas - tentativas} tentativas restantes.")
+
+   
+    for l in palavra_secreta:
+        if l in letras_acertadas:
+            print(l, end=" ")
+        else:
+            print("_", end=" ")
+    print("\n")
+
+    
+    if all(l in letras_acertadas for l in palavra_secreta):
+        print("Parabéns! Você descobriu a palavra secreta!")
+        break
+else:
+    print("Suas tentativas acabaram.")
+
+
+for l in palavra_secreta:
+        if l in letras_acertadas:
+            print(l, end=" ")
+        else:
+            print("_", end=" ")
+            
+palavra = input("\nDigite a palavra secreta: ").lower() 
+if palavra == palavra_secreta: 
+    print("Parabéns! Você acertou a palavra secreta.") 
+else: 
+    print(f"Que pena! A palavra secreta era '{palavra_secreta}'.")
