@@ -23,11 +23,14 @@ class ListaDeTarefas:
         self.tarefas = []
 
     def adicionar_tarefa(self, tarefa):
-        if tarefa  in self.tarefas:
-            print("Erro ao adicionar a tarefa.")
-        else:
+            for t in self.tarefas:
+                if t.titulo.lower() == tarefa.titulo.lower():
+                    print("Erro ao adicionar a tarefa.")
+                    return 
+                
             self.tarefas.append(tarefa)
             print("Tarefa adicionada com sucesso!")
+                
 
     def remover_tarefa(self, tarefa):
         if tarefa in self.tarefas:
@@ -52,9 +55,9 @@ class ListaDeTarefas:
     def buscar_tarefas_por_status(self, status):
         return [tarefa for tarefa in self.tarefas if tarefa.status.lower() == status.lower()]
     
-    def concluir_tarefa(self):
+    def concluir_tarefa(self,titulo):
         for tarefa in self.tarefas:
-            if tarefa.status.lower() == "pendente":
+            if tarefa.titulo.lower() == titulo.lower():
                 tarefa.concluir_tarefa()
 
     
