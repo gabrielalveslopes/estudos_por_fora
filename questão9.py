@@ -8,6 +8,9 @@ class Tarefa:
     def concluir_tarefa(self):
         self.status = "Concluída"
 
+    def tarefa_pendente(self):
+        self.status ="pendente"
+
     def editar_titulo(self, novo_titulo):
         self.titulo = novo_titulo
     
@@ -49,4 +52,9 @@ class ListaDeTarefas:
     def buscar_tarefas_por_status(self, status):
         return [tarefa for tarefa in self.tarefas if tarefa.status.lower() == status.lower()]
     
+    def concluir_tarefa(self):
+        for tarefa in self.tarefas:
+            if tarefa.status.lower() == "pendente":
+                tarefa.concluir_tarefa()
+
     
